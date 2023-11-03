@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px;
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.message {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+.reset-button {
+    margin-top: 10px;
+    font-size: 1em;
+    padding: 10px 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    border: 2px solid #333; /* Add a border for visual separation */
+}
+
+/* Add a hover effect to change the background color on hover */
+.cell:hover {
+    background-color: #ccc;
+}
+
+/* Define colors for 'X' and 'O' */
+.cell[data-value="X"] {
+    background-color: #ff6347; /* Tomato */
+}
+
+.cell[data-value="O"] {
+    background-color: #87ceeb; /* Sky Blue */
+}
+
+.reset-button {
+    margin-top: 10px;
+    font-size: 1em;
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    background-color: #45a049; /* Darker Green on hover */
+}
+.cell {
+    /* ... (previous styles) */
+    transition: background-color 0.3s; /* Add a transition effect for smooth hover */
+}
+
+.cell:hover {
+    background-color: #ffcccc; /* Reddish hover effect */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom, #4a148c, #880e4f); /* Add gradient background */
+    color: #fff; /* Set text color to white for better contrast */
+}
+
+.board {
+    /* ... (previous styles) */
+    background-color: rgba(255, 255, 255, 0.7); /* Add a semi-transparent white background */
+    border-radius: 10px; /* Add rounded corners */
+    padding: 10px; /* Add some padding for better appearance */
+}
+
+.cell {
+    /* ... (previous styles) */
+    border: 2px solid #333;
+    background-color: #9ef2eb; /* Set default cell background color to white */
+}
+
+.cell:hover {
+    background-color: #ffcccc; /* Reddish hover effect */
+}
+
+.reset-button {
+    /* ... (previous styles) */
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Add rounded corners to the button */
+}
+
+.reset-button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <style>
+      #circle {
+        background: beige;
+        position: relative;
+        border: 2px solid black;
+        height: 200px;
+        width: 200px;
+        margin: auto;
+        border-radius: 50%;
+      }
+
+      #t1,
+      #t2,
+      #t3,
+      #t4,
+      #t5,
+      #t6,
+      #t7,
+      #t8,
+      #t9,
+      #t10,
+      #t11,
+      #t12 {
+        position: absolute;
+        height: var(--t-length);
+        width: 1px;
+        background: darkgray;
+        top: calc(100px - var(--t-length) / 2);
+        left: 100px;
+        border-radius: 1px;
+        transition: all 100ms ease-in-out;
+      }
+
+      #hours,
+      #minutes,
+      #seconds {
+        position: absolute;
+        width: 2px;
+        background: black;
+
+        left: 100px;
+        border-radius: 1px;
+        transition: all 100ms ease-in-out;
+      }
+
+      #hours {
+        height: calc(var(--t-length) * 2);
+        top: 81px;
+      }
+
+      #minutes {
+        height: calc(var(--t-length) * 3);
+        top: 71px;
+      }
+
+      #seconds {
+        height: calc(var(--t-length) * 4);
+        top: 61px;
+      }
+
+      #center {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: darkgray;
+        top: 100px;
+        left: 100px;
+        border-radius: 2px;
+      }
+
+      :root {
+        --t-length: 20px;
+      }
+
+      #pendulum-2 {
+        position: absolute;
+        animation: pendulum2-animation 2s infinite ease-in-out;
+        width: 2px;
+        height: 250px;
+        background: black;
+        top: 100px;
+        left: 100px;
+        transform-origin: top center;
+        z-index: -1;
+      }
+
+      #pendulum {
+        position: absolute;
+        animation: pendulum-animation 2s infinite ease-in-out;
+        width: 40px;
+        height: 40px;
+        background: gold;
+        border: 2px solid darkgray;
+        top: 80px;
+        left: 80px;
+        border-radius: 100%;
+        transform-origin: top center;
+      }
+
+      @keyframes pendulum-animation {
+        0% {
+          transform: rotate(45deg) translateY(250px);
+        }
+
+        50% {
+          transform: rotate(-45deg) translateY(250px);
+        }
+
+        100% {
+          transform: rotate(45deg) translateY(250px);
+        }
+      }
+
+      @keyframes pendulum2-animation {
+        0% {
+          transform: rotate(48deg);
+        }
+
+        50% {
+          transform: rotate(-48deg);
+        }
+
+        100% {
+          transform: rotate(48deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="circle">
+      <div id="t1"></div>
+      <div id="t2"></div>
+      <div id="t3"></div>
+      <div id="t4"></div>
+      <div id="t5"></div>
+      <div id="t6"></div>
+      <div id="t7"></div>
+      <div id="t8"></div>
+      <div id="t9"></div>
+      <div id="t10"></div>
+      <div id="t11"></div>
+      <div id="t12"></div>
+
+      <div id="center"></div>
+      <div id="pendulum-2"></div>
+      <div id="pendulum"></div>
+
+      <div id="hours"></div>
+      <div id="minutes"></div>
+      <div id="seconds"></div>
+    </div>
+
+    <script>
+      const hours = document.getElementById('hours');
+      const minutes = document.getElementById('minutes');
+      const seconds = document.getElementById('seconds');
+
+      function updateTime() {
+        const date = new Date();
+        h = date.getHours();
+        m = date.getMinutes();
+        s = date.getSeconds();
+
+        let anim;
+        if (s === 0) {
+          seconds.style.transition = 'unset';
+        }
+        hours.style.transform = `rotate(${
+          (h / 12) * 360
+        }deg) translateY(-26px)`;
+        minutes.style.transform = `rotate(${
+          (m / 60) * 360
+        }deg) translateY(-36px)`;
+        seconds.style.transform = `rotate(${
+          (s / 60) * 360
+        }deg) translateY(-46px)`;
+        if (s == 0) {
+          setTimeout(() => {
+            seconds.style.transition = '';
+          }, 1);
+        }
+      }
+
+      updateTime();
+
+      setInterval(() => {
+        updateTime();
+      }, 1000);
+
+      for (let t = 1; t <= 12; t++) {
+        const element = document.getElementById('t' + t);
+        element.style.transform = `rotate(${
+          (t / 12) * 360
+        }deg) translateY(-85px)`;
+      }
+    </script>
+  </body>
+</html>
